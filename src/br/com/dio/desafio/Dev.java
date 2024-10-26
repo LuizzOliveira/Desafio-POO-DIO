@@ -5,7 +5,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 
-public class Dev {
+public class Dev{
 
     private String nome;
 

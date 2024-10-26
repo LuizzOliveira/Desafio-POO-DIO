@@ -3,16 +3,14 @@ import br.com.dio.desafio.*;
 import java.time.LocalDate;
 
 public class Main {
-    public static void main(String[] args){
-
+    public static void main(String[] args) {
+        // Criação de cursos e mentorias
         Curso cur = new Curso();
-        Curso cur2 = new Curso();
-        Mentoria mentoria = new Mentoria();
-
         cur.setTitulo("Java");
         cur.setDescricao("Linguagem de programação orientada a objeto!");
         cur.setCargaHoraria(8);
 
+        Curso cur2 = new Curso();
         cur2.setTitulo("Python");
         cur2.setDescricao("Mentoria de automação");
         cur2.setCargaHoraria(4);
@@ -27,14 +25,7 @@ public class Main {
         ment2.setDescricao("Mentoria de Linguagem de programação orientada a objeto!");
         ment2.setData(LocalDate.now());
 
-
-
-        Conteudo conteudo = new Curso();
-
-        /*System.out.println(cur);
-        System.out.println(cur2);
-        System.out.println(ment);*/
-
+        // Criação dos bootcamps
         Bootcamp boot = new Bootcamp();
         boot.setNome("Bootcamp Java Developer");
         boot.setDescricao("Descrição Bootcamp Java Developer");
@@ -47,22 +38,41 @@ public class Main {
         boot2.getConteudos().add(cur2);
         boot2.getConteudos().add(ment2);
 
-
+        // Criação do desenvolvedor Luiz
         Dev dev = new Dev();
         dev.setNome("Luiz");
         dev.inscreverBootcamp(boot);
         System.out.println("Conteúdos Inscritos Luiz: " + dev.getConteudoInscritos() + "\n");
+
+        // Progresso do desenvolvedor Luiz
         dev.progredir();
         System.out.println("Conteúdos Inscritos Luiz: " + dev.getConteudoInscritos() + "\n");
         dev.progredir();
-        System.out.println("Conteúdos Concluídos Luiz: " + dev.getConteudoInscritos());
-        System.out.println("Xp: " + dev.calcularTotalXp() + "\n");
+        System.out.println("Conteúdos Concluídos Luiz: " + dev.getConteudosConcluidos());
+        System.out.println("XP: " + dev.calcularTotalXp() + "\n");
 
+        // Geração do certificado para Luiz
+        if (dev.getConteudoInscritos().isEmpty()) {
+            Certificado.gerarCertificado(dev, boot);
+        } else {
+            System.out.println("Conteúdos pendentes para conclusão do bootcamp Luiz.");
+        }
 
+        // Criação do desenvolvedor Henrique
         Dev dev1 = new Dev();
         dev1.setNome("Henrique");
         dev1.inscreverBootcamp(boot2);
         System.out.println("Conteúdos Inscritos Henrique: " + dev1.getConteudoInscritos() + "\n");
 
+        // Simulação de progresso para Henrique
+        dev1.progredir(); // Progredir um conteúdo
+        dev1.progredir(); // Progredir o próximo conteúdo
+
+        // Geração do certificado para Henrique
+        if (dev1.getConteudoInscritos().isEmpty()) {
+            Certificado.gerarCertificado(dev1, boot2);
+        } else {
+            System.out.println("Conteúdos pendentes para conclusão do bootcamp Henrique.");
+        }
     }
 }

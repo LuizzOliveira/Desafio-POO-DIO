@@ -1,6 +1,6 @@
 package br.com.dio.desafio;
 
-public class Curso extends Conteudo {
+public class Curso extends Conteudo{
 
     private int cargaHoraria;
 

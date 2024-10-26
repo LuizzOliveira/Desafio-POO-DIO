@@ -1,6 +1,6 @@
 package br.com.dio.desafio;
 
-public abstract class Conteudo {
+public abstract class Conteudo{
     protected static double XP_PADRAO = 10d;
 
     private String titulo;
